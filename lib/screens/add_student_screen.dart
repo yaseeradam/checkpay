@@ -35,6 +35,8 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
       _idCtrl.text = widget.student!.id;
       _selectedClass = widget.student!.className;
       if (widget.student!.photoPath != null) _photo = File(widget.student!.photoPath!);
+      _parentCtrl.text = widget.student!.parentName ?? '';
+      _phoneCtrl.text = widget.student!.phone ?? '';
     }
     _loadClasses();
   }
@@ -137,15 +139,23 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
       name: _nameCtrl.text.trim(),
       className: _selectedClass!,
       photoPath: _photo?.path,
+      parentName: _parentCtrl.text.trim().isEmpty ? null : _parentCtrl.text.trim(),
+      phone: _phoneCtrl.text.trim().isEmpty ? null : _phoneCtrl.text.trim(),
     );
     try {
-      await DB.addStudent(student);
+      if (isEdit) {
+        await DB.updateStudent(student);
+      } else {
+        await DB.addStudent(student);
+      }
       if (mounted) {
-        Navigator.pop(context);
+        Navigator.pop(context, true);
         showResultModal(context,
           isSuccess: true,
-          title: 'Student Added!',
-          message: '${_nameCtrl.text.trim()} has been enrolled successfully.',
+          title: isEdit ? 'Student Updated!' : 'Student Added!',
+          message: isEdit
+              ? '${student.name}\'s details have been updated.'
+              : '${student.name} has been enrolled successfully.',
         );
       }
     } catch (e) {

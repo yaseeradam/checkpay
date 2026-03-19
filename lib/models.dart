@@ -21,6 +21,8 @@ class Student {
   final String name;
   final String className;
   final String? photoPath;
+  final String? parentName;
+  final String? phone;
   bool isPaid;
 
   Student({
@@ -28,6 +30,8 @@ class Student {
     required this.name,
     required this.className,
     this.photoPath,
+    this.parentName,
+    this.phone,
     this.isPaid = false,
   });
 

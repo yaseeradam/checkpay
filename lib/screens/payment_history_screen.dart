@@ -309,6 +309,15 @@ class _PaymentHistoryScreenState extends State<PaymentHistoryScreen> {
                         Text(widget.student.name, style: ts(20, FontWeight.w800, Colors.white)),
                         Text('ID: #${widget.student.id} · ${widget.student.className}',
                             style: ts(12, FontWeight.w500, Colors.white.withOpacity(0.75))),
+                        if (widget.student.parentName != null) ...[  
+                          const SizedBox(height: 2),
+                          Text('Parent: ${widget.student.parentName}',
+                              style: ts(11, FontWeight.w500, Colors.white.withOpacity(0.65))),
+                        ],
+                        if (widget.student.phone != null) ...[  
+                          Text('📞 ${widget.student.phone}',
+                              style: ts(11, FontWeight.w500, Colors.white.withOpacity(0.65))),
+                        ],
                       ])),
                     ]),
                   ),

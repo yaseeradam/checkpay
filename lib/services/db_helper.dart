@@ -6,7 +6,7 @@ import '../models.dart';
 
 class DB {
   static Database? _db;
-  static const _version = 2;
+  static const _version = 3;
 
   static Future<Database> get instance async {
     _db ??= await _open();
@@ -24,7 +24,10 @@ class DB {
         await _seedClasses(db);
       },
       onUpgrade: (db, oldVersion, newVersion) async {
-        // v1 → v2: no schema change yet, reserved for future use
+        if (oldVersion < 3) {
+          await db.execute('ALTER TABLE students ADD COLUMN parent_name TEXT');
+          await db.execute('ALTER TABLE students ADD COLUMN phone TEXT');
+        }
       },
     );
   }
@@ -43,7 +46,9 @@ class DB {
         id TEXT PRIMARY KEY,
         name TEXT NOT NULL,
         class_name TEXT NOT NULL,
-        photo_path TEXT
+        photo_path TEXT,
+        parent_name TEXT,
+        phone TEXT
       )
     ''');
     await db.execute('''
@@ -125,6 +130,16 @@ class DB {
     }
   }
 
+  static Future<void> updateClass(int id, String name, String section, double fee) async {
+    try {
+      final db = await instance;
+      await db.update('classes', {'name': name, 'section': section, 'fee_amount': fee},
+          where: 'id = ?', whereArgs: [id]);
+    } catch (e) {
+      throw Exception('Failed to update class: $e');
+    }
+  }
+
   static Future<void> updateClassFee(int id, double fee) async {
     try {
       final db = await instance;
@@ -168,6 +183,8 @@ class DB {
         name: row['name'] as String,
         className: row['class_name'] as String,
         photoPath: row['photo_path'] as String?,
+        parentName: row['parent_name'] as String?,
+        phone: row['phone'] as String?,
         isPaid: paidIds.contains(row['id'] as String),
       )).toList();
     } catch (e) {
@@ -194,9 +211,26 @@ class DB {
         'name': s.name,
         'class_name': s.className,
         'photo_path': s.photoPath,
+        'parent_name': s.parentName,
+        'phone': s.phone,
       });
     } catch (e) {
       rethrow;
+    }
+  }
+
+  static Future<void> updateStudent(Student s) async {
+    try {
+      final db = await instance;
+      await db.update('students', {
+        'name': s.name,
+        'class_name': s.className,
+        'photo_path': s.photoPath,
+        'parent_name': s.parentName,
+        'phone': s.phone,
+      }, where: 'id = ?', whereArgs: [s.id]);
+    } catch (e) {
+      throw Exception('Failed to update student: $e');
     }
   }
 

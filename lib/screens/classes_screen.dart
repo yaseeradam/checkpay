@@ -441,6 +441,16 @@ class _ClassCard extends StatelessWidget {
                 Text('${_fmt(schoolClass.feeAmount)}/term', style: ts(11, FontWeight.w500, kSlate400)),
               ]),
             ])),
+            // Edit button
+            GestureDetector(
+              onTap: () => _showEditClassSheet(context),
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(color: kPrimary.withOpacity(0.08), borderRadius: BorderRadius.circular(10)),
+                child: const Icon(Icons.edit_rounded, color: kPrimary, size: 18),
+              ),
+            ),
+            const SizedBox(width: 8),
             // Delete button
             GestureDetector(
               onTap: () => _confirmDelete(context),
@@ -540,6 +550,143 @@ class _ClassCard extends StatelessWidget {
           ]),
         ),
       ]),
+    );
+  }
+
+  void _showEditClassSheet(BuildContext context) {
+    final nameCtrl = TextEditingController(text: schoolClass.name);
+    final feeCtrl = TextEditingController(text: schoolClass.feeAmount.toStringAsFixed(0));
+    String section = schoolClass.section;
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
+      builder: (ctx) => Padding(
+        padding: EdgeInsets.only(bottom: MediaQuery.of(ctx).viewInsets.bottom),
+        child: StatefulBuilder(
+          builder: (ctx, setS) => Padding(
+            padding: const EdgeInsets.fromLTRB(24, 20, 24, 36),
+            child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Center(child: Container(width: 40, height: 4,
+                  decoration: BoxDecoration(color: kSlate100, borderRadius: BorderRadius.circular(999)))),
+              const SizedBox(height: 20),
+              Row(children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(color: kPrimary.withOpacity(0.1), borderRadius: BorderRadius.circular(12)),
+                  child: const Icon(Icons.edit_rounded, color: kPrimary, size: 22),
+                ),
+                const SizedBox(width: 12),
+                Text('Edit Class', style: ts(18, FontWeight.w800, kSlate900)),
+              ]),
+              const SizedBox(height: 24),
+              Text('Class Name', style: ts(12, FontWeight.w600, kSlate500)),
+              const SizedBox(height: 6),
+              TextField(
+                controller: nameCtrl,
+                style: ts(14, FontWeight.w600, kSlate900),
+                decoration: InputDecoration(
+                  hintText: 'e.g. JSS 4, SS 3',
+                  hintStyle: ts(14, FontWeight.w400, kSlate400),
+                  prefixIcon: const Icon(Icons.drive_file_rename_outline_rounded, color: kSlate400),
+                  filled: true, fillColor: kSlate100,
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide.none),
+                  focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14),
+                      borderSide: const BorderSide(color: kPrimary, width: 2)),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text('Section', style: ts(12, FontWeight.w600, kSlate500)),
+              const SizedBox(height: 6),
+              Container(
+                decoration: BoxDecoration(color: kSlate100, borderRadius: BorderRadius.circular(14)),
+                child: Row(children: [
+                  Expanded(child: GestureDetector(
+                    onTap: () => setS(() => section = 'Junior Section'),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 150),
+                      margin: const EdgeInsets.all(4),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      decoration: BoxDecoration(
+                        color: section == 'Junior Section' ? kPrimary : Colors.transparent,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                        Icon(Icons.school_rounded, size: 16,
+                            color: section == 'Junior Section' ? Colors.white : kSlate500),
+                        const SizedBox(width: 6),
+                        Text('Junior', style: ts(13, FontWeight.w700,
+                            section == 'Junior Section' ? Colors.white : kSlate500)),
+                      ]),
+                    ),
+                  )),
+                  Expanded(child: GestureDetector(
+                    onTap: () => setS(() => section = 'Senior Section'),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 150),
+                      margin: const EdgeInsets.all(4),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      decoration: BoxDecoration(
+                        color: section == 'Senior Section' ? kPrimary : Colors.transparent,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                        Icon(Icons.history_edu_rounded, size: 16,
+                            color: section == 'Senior Section' ? Colors.white : kSlate500),
+                        const SizedBox(width: 6),
+                        Text('Senior', style: ts(13, FontWeight.w700,
+                            section == 'Senior Section' ? Colors.white : kSlate500)),
+                      ]),
+                    ),
+                  )),
+                ]),
+              ),
+              const SizedBox(height: 16),
+              Text('Term Fee (₦)', style: ts(12, FontWeight.w600, kSlate500)),
+              const SizedBox(height: 6),
+              TextField(
+                controller: feeCtrl,
+                keyboardType: TextInputType.number,
+                style: ts(14, FontWeight.w600, kSlate900),
+                decoration: InputDecoration(
+                  hintText: '150000',
+                  hintStyle: ts(14, FontWeight.w400, kSlate400),
+                  prefixIcon: const Icon(Icons.payments_outlined, color: kSlate400),
+                  prefixText: '₦ ',
+                  prefixStyle: ts(14, FontWeight.w600, kSlate900),
+                  filled: true, fillColor: kSlate100,
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide.none),
+                  focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14),
+                      borderSide: const BorderSide(color: kPrimary, width: 2)),
+                ),
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: () async {
+                    if (nameCtrl.text.trim().isEmpty) return;
+                    final fee = double.tryParse(feeCtrl.text) ?? schoolClass.feeAmount;
+                    await DB.updateClass(schoolClass.id, nameCtrl.text.trim(), section, fee);
+                    if (ctx.mounted) Navigator.pop(ctx);
+                    onRefresh();
+                    onRefreshDashboard?.call();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: kPrimary, foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                    elevation: 0,
+                  ),
+                  icon: const Icon(Icons.save_rounded),
+                  label: Text('Save Changes', style: ts(15, FontWeight.w700, Colors.white)),
+                ),
+              ),
+            ]),
+          ),
+        ),
+      ),
     );
   }
 
