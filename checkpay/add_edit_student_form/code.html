@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                        "success": "#22C55E",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Add Student - CheckPay</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex items-center justify-center p-4">
+<div class="w-full max-w-lg bg-white dark:bg-slate-900 rounded-xl shadow-xl overflow-hidden border border-slate-200 dark:border-slate-800">
+<!-- TopAppBar -->
+<div class="flex items-center px-6 py-5 border-b border-slate-100 dark:border-slate-800 justify-between">
+<button class="text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 p-2 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight flex-1 text-center pr-10">Add Student</h2>
+</div>
+<div class="p-8 space-y-6">
+<!-- Student Full Name -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-semibold ml-1">Student Full Name</label>
+<div class="relative">
+<input class="w-full rounded-xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-2 focus:ring-primary/20 h-14 px-4 text-base transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500" placeholder="e.g. Alexander Pierce" type="text" value=""/>
+</div>
+</div>
+<!-- Class Selection -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-semibold ml-1">Class</label>
+<div class="relative">
+<select class="w-full rounded-xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-2 focus:ring-primary/20 h-14 px-4 text-base appearance-none transition-all">
+<option disabled="" selected="" value="">Select student's class</option>
+<option value="grade-1">Grade 1 - Alpha</option>
+<option value="grade-2">Grade 2 - Beta</option>
+<option value="grade-3">Grade 3 - Gamma</option>
+<option value="grade-4">Grade 4 - Delta</option>
+</select>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined">unfold_more</span>
+</div>
+</div>
+</div>
+<!-- Parent Name -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-semibold ml-1">Parent Name</label>
+<div class="relative">
+<input class="w-full rounded-xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-2 focus:ring-primary/20 h-14 px-4 text-base transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500" placeholder="Enter parent's name" type="text" value=""/>
+</div>
+</div>
+<!-- Phone Number -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-semibold ml-1">Phone Number</label>
+<div class="relative flex">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-xl">call</span>
+</div>
+<input class="w-full rounded-xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-2 focus:ring-primary/20 h-14 pl-12 pr-4 text-base transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500" placeholder="+1 (555) 000-0000" type="tel" value=""/>
+</div>
+</div>
+<!-- Additional Spacer -->
+<div class="pt-4">
+<button class="w-full bg-success hover:bg-success/90 text-white font-bold py-4 px-6 rounded-full shadow-lg shadow-success/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">person_add</span>
+                    Save Student
+                </button>
+</div>
+</div>
+<!-- Illustration / Background Detail -->
+<div class="px-8 pb-8 flex justify-center opacity-10 dark:opacity-20 grayscale">
+<div class="w-full h-1 bg-gradient-to-r from-transparent via-slate-400 to-transparent rounded-full"></div>
+</div>
+</div>
+</body></html>

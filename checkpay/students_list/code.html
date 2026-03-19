@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CheckPay - Students List</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#21c45d',
+          },
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+          },
+          borderRadius: {
+            'full': '9999px',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-styling">
+    body {
+      font-family: 'Manrope', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      background-color: #f9fafb;
+    }
+    /* Mimic soft tap feedback */
+    .tap-feedback:active {
+      background-color: #f3f4f6;
+      transform: scale(0.98);
+      transition: transform 0.1s ease;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen text-slate-800">
+<!-- BEGIN: Header -->
+<header class="bg-white px-4 pt-6 pb-4 sticky top-0 z-10 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<button class="p-2 -ml-2 rounded-full tap-feedback" data-purpose="back-button">
+<svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m15 18-6-6 6-6"></path></svg>
+</button>
+<h1 class="text-xl font-bold">JSS1 Students</h1>
+</div>
+<button class="p-2 rounded-full tap-feedback text-slate-500">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+</button>
+</div>
+<!-- BEGIN: Search Bar -->
+<div class="relative w-full" data-purpose="search-container">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<svg class="h-5 w-5 text-slate-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<input class="block w-full pl-11 pr-4 py-3 bg-slate-100 border-transparent focus:ring-primary focus:border-primary rounded-full text-sm" placeholder="Search for a student..." type="text"/>
+</div>
+<!-- END: Search Bar -->
+</header>
+<!-- END: Header -->
+<!-- BEGIN: Student List -->
+<main class="flex-grow p-4 space-y-3 pb-24">
+<!-- Student Row: Paid -->
+<div class="bg-white rounded-2xl p-4 flex items-center justify-between shadow-sm tap-feedback border border-slate-50" data-purpose="student-item">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-500">AA</div>
+<div>
+<h3 class="font-semibold text-slate-900 leading-tight">Adebayo Aliyu</h3>
+<p class="text-xs text-slate-500 uppercase tracking-wider mt-0.5">ID: 2024-001</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full uppercase tracking-wide">Paid</span>
+</div>
+<!-- Student Row: Unpaid -->
+<div class="bg-white rounded-2xl p-4 flex items-center justify-between shadow-sm tap-feedback border border-slate-50" data-purpose="student-item">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-500">BE</div>
+<div>
+<h3 class="font-semibold text-slate-900 leading-tight">Blessing Emmanuel</h3>
+<p class="text-xs text-slate-500 uppercase tracking-wider mt-0.5">ID: 2024-005</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full uppercase tracking-wide">Unpaid</span>
+</div>
+<!-- Student Row: Paid -->
+<div class="bg-white rounded-2xl p-4 flex items-center justify-between shadow-sm tap-feedback border border-slate-50" data-purpose="student-item">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-500">CO</div>
+<div>
+<h3 class="font-semibold text-slate-900 leading-tight">Chinelo Okeke</h3>
+<p class="text-xs text-slate-500 uppercase tracking-wider mt-0.5">ID: 2024-012</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full uppercase tracking-wide">Paid</span>
+</div>
+<!-- Student Row: Unpaid -->
+<div class="bg-white rounded-2xl p-4 flex items-center justify-between shadow-sm tap-feedback border border-slate-50" data-purpose="student-item">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-500">DM</div>
+<div>
+<h3 class="font-semibold text-slate-900 leading-tight">David Musa</h3>
+<p class="text-xs text-slate-500 uppercase tracking-wider mt-0.5">ID: 2024-022</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full uppercase tracking-wide">Unpaid</span>
+</div>
+<!-- Student Row: Paid -->
+<div class="bg-white rounded-2xl p-4 flex items-center justify-between shadow-sm tap-feedback border border-slate-50" data-purpose="student-item">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-500">FK</div>
+<div>
+<h3 class="font-semibold text-slate-900 leading-tight">Fatima Kabiru</h3>
+<p class="text-xs text-slate-500 uppercase tracking-wider mt-0.5">ID: 2024-030</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full uppercase tracking-wide">Paid</span>
+</div>
+<!-- Student Row: Unpaid -->
+<div class="bg-white rounded-2xl p-4 flex items-center justify-between shadow-sm tap-feedback border border-slate-50" data-purpose="student-item">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-500">GR</div>
+<div>
+<h3 class="font-semibold text-slate-900 leading-tight">Grace Richard</h3>
+<p class="text-xs text-slate-500 uppercase tracking-wider mt-0.5">ID: 2024-035</p>
+</div>
+</div>
+<span class="px-3 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full uppercase tracking-wide">Unpaid</span>
+</div>
+</main>
+<!-- END: Student List -->
+<!-- BEGIN: Floating Action Button -->
+<div class="fixed bottom-24 right-6">
+<button class="bg-primary text-white px-6 py-4 rounded-full shadow-lg flex items-center gap-2 font-bold tap-feedback active:scale-95 transition-transform" data-purpose="add-student-fab">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+<span>Add Student</span>
+</button>
+</div>
+<!-- END: Floating Action Button -->
+<!-- BEGIN: Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 flex justify-around items-center py-3 px-2 z-20" data-purpose="bottom-nav">
+<button class="flex flex-col items-center gap-1 text-slate-400 tap-feedback flex-1">
+<svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="9" rx="1" width="7" x="3" y="3"></rect><rect height="5" rx="1" width="7" x="14" y="3"></rect><rect height="9" rx="1" width="7" x="14" y="12"></rect><rect height="5" rx="1" width="7" x="3" y="16"></rect></svg>
+<span class="text-[10px] font-medium">Dashboard</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary tap-feedback flex-1">
+<svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path><path d="M6.5 18H20"></path></svg>
+<span class="text-[10px] font-bold">Classes</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 tap-feedback flex-1">
+<svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+<span class="text-[10px] font-medium">Reports</span>
+</button>
+</nav>
+<!-- END: Bottom Navigation -->
+</body></html>

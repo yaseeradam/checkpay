@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CheckPay - Reports</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#22C55E",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0F172A",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "1.25rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .custom-shadow { box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<header class="sticky top-0 z-10 flex items-center bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md p-4 justify-between border-b border-slate-200 dark:border-slate-800">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center">Reports</h2>
+<div class="flex size-10 items-center justify-end">
+<button class="flex items-center justify-center rounded-full size-10 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">calendar_today</span>
+</button>
+</div>
+</header>
+<div class="flex gap-3 p-4 overflow-x-auto hide-scrollbar">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary text-white px-6 transition-all shadow-sm">
+<span class="text-sm font-semibold">This Term</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-6 border border-slate-200 dark:border-slate-700 hover:border-primary transition-all">
+<span class="text-sm font-medium">This Month</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-6 border border-slate-200 dark:border-slate-700 hover:border-primary transition-all">
+<span class="text-sm font-medium">Custom</span>
+</button>
+</div>
+<section class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[160px] flex-1 flex-col gap-2 rounded-xl bg-white dark:bg-slate-800 p-5 custom-shadow border border-slate-100 dark:border-slate-700">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">payments</span>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded-full">+12%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Total Revenue</p>
+<p class="text-slate-900 dark:text-slate-100 text-2xl font-bold">₦4.2M</p>
+</div>
+<div class="flex min-w-[160px] flex-1 flex-col gap-2 rounded-xl bg-white dark:bg-slate-800 p-5 custom-shadow border border-slate-100 dark:border-slate-700">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-red-500 bg-red-50 p-2 rounded-lg">account_balance_wallet</span>
+<span class="text-red-500 text-xs font-bold bg-red-50 px-2 py-1 rounded-full">-5%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Outstanding</p>
+<p class="text-slate-900 dark:text-slate-100 text-2xl font-bold">₦850K</p>
+</div>
+<div class="flex min-w-[160px] flex-1 flex-col gap-2 rounded-xl bg-white dark:bg-slate-800 p-5 custom-shadow border border-slate-100 dark:border-slate-700">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-blue-500 bg-blue-50 p-2 rounded-lg">analytics</span>
+<span class="text-blue-500 text-xs font-bold bg-blue-50 px-2 py-1 rounded-full">+3%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Collection Rate</p>
+<p class="text-slate-900 dark:text-slate-100 text-2xl font-bold">82%</p>
+</div>
+</section>
+<section class="p-4 space-y-6">
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl custom-shadow border border-slate-100 dark:border-slate-700">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-slate-900 dark:text-slate-100 text-base font-bold">Monthly Revenue Collection</h3>
+<span class="material-symbols-outlined text-slate-400">more_horiz</span>
+</div>
+<div class="h-48 w-full flex items-end gap-2 relative">
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all rounded-t-lg h-[40%]" title="Jan"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all rounded-t-lg h-[65%]" title="Feb"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all rounded-t-lg h-[55%]" title="Mar"></div>
+<div class="flex-1 bg-primary hover:bg-primary transition-all rounded-t-lg h-[90%]" title="Apr"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all rounded-t-lg h-[75%]" title="May"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary transition-all rounded-t-lg h-[60%]" title="Jun"></div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1">
+<span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl custom-shadow border border-slate-100 dark:border-slate-700">
+<h3 class="text-slate-900 dark:text-slate-100 text-base font-bold mb-6">Payment Status by Class</h3>
+<div class="space-y-4">
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-medium">
+<span class="text-slate-600 dark:text-slate-400">JSS 1</span>
+<span class="text-slate-900 dark:text-slate-100">92%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[92%] rounded-full"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-medium">
+<span class="text-slate-600 dark:text-slate-400">JSS 2</span>
+<span class="text-slate-900 dark:text-slate-100">78%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[78%] rounded-full"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-medium">
+<span class="text-slate-600 dark:text-slate-400">JSS 3</span>
+<span class="text-slate-900 dark:text-slate-100">65%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[65%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-xl custom-shadow border border-slate-100 dark:border-slate-700">
+<h3 class="text-slate-900 dark:text-slate-100 text-base font-bold mb-6">Payment Methods</h3>
+<div class="flex items-center gap-6">
+<div class="relative size-32">
+<svg class="size-full" viewbox="0 0 36 36">
+<path class="text-slate-100 dark:text-slate-700" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-width="4"></path>
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="65, 100" stroke-linecap="round" stroke-width="4"></path>
+<path class="text-blue-500" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="25, 100" stroke-dashoffset="-65" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="text-lg font-bold text-slate-900 dark:text-slate-100">100%</span>
+</div>
+</div>
+<div class="space-y-3 flex-1">
+<div class="flex items-center gap-2 text-xs font-medium">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-slate-600 dark:text-slate-400">Transfer (65%)</span>
+</div>
+<div class="flex items-center gap-2 text-xs font-medium">
+<div class="size-2 rounded-full bg-blue-500"></div>
+<span class="text-slate-600 dark:text-slate-400">Card/POS (25%)</span>
+</div>
+<div class="flex items-center gap-2 text-xs font-medium">
+<div class="size-2 rounded-full bg-slate-200 dark:bg-slate-600"></div>
+<span class="text-slate-600 dark:text-slate-400">Cash (10%)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl custom-shadow border border-slate-100 dark:border-slate-700 overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+<h3 class="text-slate-900 dark:text-slate-100 text-base font-bold">Recent Large Payments</h3>
+<button class="text-primary text-sm font-bold">View All</button>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-700">
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100 truncate">Adewale Thompson</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">SS3 Science • Tuition Fee</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">₦245,000</p>
+<p class="text-[10px] font-medium text-slate-400 uppercase">Today, 10:45 AM</p>
+</div>
+</div>
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100 truncate">Chidera Okafor</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">JSS2 Gold • Boarding Fee</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">₦180,000</p>
+<p class="text-[10px] font-medium text-slate-400 uppercase">Yesterday</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 px-6 py-3 flex justify-between items-center max-w-screen-xl mx-auto rounded-t-2xl">
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">credit_card</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Payments</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary transition-colors" href="#">
+<div class="relative">
+<span class="material-symbols-outlined text-[24px] fill-[1]">bar_chart</span>
+<div class="absolute -top-1 -right-1 size-1.5 bg-primary rounded-full"></div>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest">Reports</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Settings</span>
+</a>
+</nav>
+</div>
+</body></html>

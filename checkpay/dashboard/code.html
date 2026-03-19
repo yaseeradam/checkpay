@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CheckPay Dashboard</title>
+<!-- Load Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Font: Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#21c45d',
+          },
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+          },
+          borderRadius: {
+            'full-custom': '9999px',
+            'card-radius': '20px',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-styling">
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: #f8fafc;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .chart-container {
+      position: relative;
+    }
+    /* Simple CSS for custom shadows and smooth edges */
+    .floating-card {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    }
+    .bottom-nav-blur {
+      backdrop-filter: blur(12px);
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+  </style>
+</head>
+<body class="pb-24">
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-4" data-purpose="app-header">
+<div class="flex items-center justify-between">
+<h1 class="text-2xl font-extrabold text-gray-900">CheckPay</h1>
+<div class="h-10 w-10 rounded-full-custom bg-primary/10 flex items-center justify-center">
+<svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<main class="px-6 py-6 space-y-8">
+<!-- BEGIN: StatCards -->
+<section class="grid grid-cols-1 gap-4" data-purpose="stat-summary">
+<div class="flex overflow-x-auto pb-4 space-x-4 snap-x no-scrollbar">
+<!-- Total Students -->
+<div class="min-w-[160px] flex-1 bg-white p-5 rounded-card-radius floating-card border border-gray-50 snap-center">
+<p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Total Students</p>
+<p class="text-2xl font-extrabold text-gray-900">1,240</p>
+<div class="mt-2 text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full-custom inline-block">+4%</div>
+</div>
+<!-- Paid This Month -->
+<div class="min-w-[160px] flex-1 bg-white p-5 rounded-card-radius floating-card border border-gray-50 snap-center">
+<p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Paid (Month)</p>
+<p class="text-2xl font-extrabold text-gray-900">868</p>
+<div class="mt-2 text-xs font-medium text-blue-500 bg-blue-50 px-2 py-1 rounded-full-custom inline-block">Active</div>
+</div>
+<!-- Unpaid Students -->
+<div class="min-w-[160px] flex-1 bg-white p-5 rounded-card-radius floating-card border border-gray-50 snap-center">
+<p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Unpaid</p>
+<p class="text-2xl font-extrabold text-red-500">372</p>
+<div class="mt-2 text-xs font-medium text-red-500 bg-red-50 px-2 py-1 rounded-full-custom inline-block">Due</div>
+</div>
+</div>
+</section>
+<!-- END: StatCards -->
+<!-- BEGIN: AnalyticsSection -->
+<section class="space-y-6" data-purpose="analytics-visualizations">
+<div class="flex items-center justify-between">
+<h2 class="text-lg font-bold text-gray-900">Analytics</h2>
+<button class="text-sm font-semibold text-primary">View Full</button>
+</div>
+<div class="grid grid-cols-1 gap-6">
+<!-- Donut Chart Card -->
+<div class="bg-white p-6 rounded-card-radius floating-card border border-gray-50 flex items-center justify-between">
+<div class="space-y-2">
+<h3 class="text-sm font-bold text-gray-800">Payment Status</h3>
+<p class="text-xs text-gray-500">Current semester status</p>
+<div class="pt-2 flex flex-col space-y-1">
+<div class="flex items-center text-xs">
+<span class="w-3 h-3 bg-primary rounded-full mr-2"></span>
+<span class="text-gray-600">70% Paid</span>
+</div>
+<div class="flex items-center text-xs">
+<span class="w-3 h-3 bg-gray-200 rounded-full mr-2"></span>
+<span class="text-gray-600">30% Unpaid</span>
+</div>
+</div>
+</div>
+<!-- Donut SVG Visualization -->
+<div class="relative h-24 w-24">
+<svg class="h-full w-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-gray-100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4"></path>
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="70, 100" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-xs font-bold text-gray-800">70%</span>
+</div>
+</div>
+</div>
+<!-- Line Chart Card -->
+<div class="bg-white p-6 rounded-card-radius floating-card border border-gray-50">
+<h3 class="text-sm font-bold text-gray-800 mb-4">6-Month Trend</h3>
+<div class="h-32 w-full">
+<!-- Simple SVG Curved Line Chart -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 300 100">
+<defs>
+<lineargradient id="gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#21c45d" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#21c45d" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 80 Q 50 20, 100 60 T 200 30 T 300 50" fill="none" stroke="#21c45d" stroke-linecap="round" stroke-width="3"></path>
+<path d="M0 80 Q 50 20, 100 60 T 200 30 T 300 50 V 100 H 0 Z" fill="url(#gradient)"></path>
+</svg>
+</div>
+<div class="flex justify-between mt-2 text-[10px] font-bold text-gray-400 uppercase tracking-widest px-1">
+<span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: AnalyticsSection -->
+<!-- BEGIN: ProgressSection -->
+<section class="space-y-4" data-purpose="class-progress-list">
+<h2 class="text-lg font-bold text-gray-900">Class Progress</h2>
+<!-- Class Card: JSS1 -->
+<div class="bg-white p-5 rounded-card-radius floating-card border border-gray-50 space-y-4">
+<div class="flex justify-between items-center">
+<div>
+<h3 class="font-extrabold text-gray-900">JSS1</h3>
+<p class="text-xs text-gray-500 font-medium">30 Students enrolled</p>
+</div>
+<span class="text-sm font-bold text-primary">70%</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2.5 bg-gray-100 rounded-full-custom overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary/80 to-primary rounded-full-custom" style="width: 70%"></div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<div class="flex -space-x-2">
+<!-- Avatars representation -->
+<div class="h-6 w-6 rounded-full border-2 border-white bg-gray-200"></div>
+<div class="h-6 w-6 rounded-full border-2 border-white bg-gray-300"></div>
+<div class="h-6 w-6 rounded-full border-2 border-white bg-gray-400"></div>
+<div class="h-6 w-6 rounded-full border-2 border-white bg-primary text-[8px] flex items-center justify-center text-white font-bold">+27</div>
+</div>
+<button class="text-xs font-bold px-4 py-2 bg-gray-50 text-gray-600 rounded-full-custom border border-gray-100">Details</button>
+</div>
+</div>
+<!-- Additional dummy class for scroll -->
+<div class="bg-white p-5 rounded-card-radius floating-card border border-gray-50 opacity-60">
+<div class="flex justify-between items-center">
+<div>
+<h3 class="font-extrabold text-gray-900">JSS2</h3>
+<p class="text-xs text-gray-500 font-medium">28 Students enrolled</p>
+</div>
+<span class="text-sm font-bold text-gray-400">45%</span>
+</div>
+<div class="w-full h-2.5 bg-gray-100 rounded-full-custom overflow-hidden mt-4">
+<div class="h-full bg-gray-300 rounded-full-custom" style="width: 45%"></div>
+</div>
+</div>
+</section>
+<!-- END: ProgressSection -->
+</main>
+<!-- BEGIN: BottomNav -->
+<nav class="fixed bottom-6 left-6 right-6 z-50" data-purpose="bottom-navigation">
+<div class="bottom-nav-blur h-16 rounded-full-custom floating-card border border-white/50 flex items-center justify-around px-4">
+<!-- Nav Item: Dashboard -->
+<a class="flex flex-col items-center justify-center text-primary" href="#">
+<svg class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm7 7v-5h4v5h-4zm2-15.586l6 6V15l-10 0v-4.586l4-4z"></path>
+</svg>
+<span class="text-[10px] font-bold mt-1">Dashboard</span>
+</a>
+<!-- Nav Item: Classes -->
+<a class="flex flex-col items-center justify-center text-gray-400" href="#">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="text-[10px] font-bold mt-1">Classes</span>
+</a>
+<!-- Nav Item: Reports -->
+<a class="flex flex-col items-center justify-center text-gray-400" href="#">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="text-[10px] font-bold mt-1">Reports</span>
+</a>
+</div>
+</nav>
+<!-- END: BottomNav -->
+</body></html>

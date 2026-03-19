@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CheckPay - Splash Screen</title>
+<!-- MANROPE FONT -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- TAILWIND CSS V3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#21c45d',
+            soft: '#F8FAFC',
+          },
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+          },
+          borderRadius: {
+            'full-custom': '9999px',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="animations">
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .animate-scale-in {
+      animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+  </style>
+<style data-purpose="layout-styles">
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+    /* Gradient background using theme colors */
+    .bg-gradient-custom {
+      background: radial-gradient(circle at center, rgba(33, 196, 93, 0.05) 0%, #F8FAFC 100%);
+    }
+  </style>
+</head>
+<body class="bg-soft font-sans antialiased">
+<!-- BEGIN: SplashContainer -->
+<main class="flex flex-col items-center justify-center h-screen w-full bg-gradient-custom px-6 text-center" data-purpose="splash-container">
+<!-- BEGIN: BrandLogo -->
+<div class="mb-8 animate-scale-in" data-purpose="logo-wrapper">
+<div class="w-24 h-24 bg-brand rounded-full flex items-center justify-center shadow-lg shadow-brand/20">
+<!-- Circular checkmark logo -->
+<svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<!-- END: BrandLogo -->
+<!-- BEGIN: BrandIdentity -->
+<div class="animate-fade-in-up" data-purpose="brand-text" style="animation-delay: 0.2s;">
+<h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
+        CheckPay
+      </h1>
+<p class="text-lg font-medium text-slate-500">
+        Simple School Fee Tracker
+      </p>
+</div>
+<!-- END: BrandIdentity -->
+<!-- BEGIN: LoadingIndicator -->
+<!-- Minimal loading indicator to reinforce the premium/minimal feel -->
+<div class="absolute bottom-16 w-full flex justify-center animate-fade-in-up" data-purpose="loading-area" style="animation-delay: 0.6s;">
+<div class="flex space-x-2">
+<div class="w-2 h-2 bg-brand/30 rounded-full animate-bounce" style="animation-delay: 0s"></div>
+<div class="w-2 h-2 bg-brand/30 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+<div class="w-2 h-2 bg-brand/30 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+</div>
+</div>
+<!-- END: LoadingIndicator -->
+</main>
+<!-- END: SplashContainer -->
+</body></html>
